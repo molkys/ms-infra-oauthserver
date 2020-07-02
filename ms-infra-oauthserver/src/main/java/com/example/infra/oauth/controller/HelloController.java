@@ -1,4 +1,4 @@
-package com.om.infra.oauth.controller;
+package com.example.infra.oauth.controller;
 
 import org.springframework.boot.actuate.trace.http.HttpTrace.Principal;
 import org.springframework.http.HttpStatus;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.om.infra.oauth.model.Welcome;
+import com.example.infra.oauth.model.Welcome;
 
 @RestController
 @RequestMapping(

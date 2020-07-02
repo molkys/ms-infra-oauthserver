@@ -1,4 +1,4 @@
-package com.om.infra.oauth;
+package com.example.infra.oauth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,7 +13,7 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 
 /**
  * Generates tokens for API clients.
- * @author orodr
+ * @author orodr	
  *
  */
 @Configuration

@@ -1,4 +1,4 @@
-package com.om.infra.oauth.model;
+package com.example.infra.oauth.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

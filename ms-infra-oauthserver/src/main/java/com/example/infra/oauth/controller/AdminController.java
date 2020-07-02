@@ -1,4 +1,4 @@
-package com.om.infra.oauth.controller;
+package com.example.infra.oauth.controller;
 
 import java.io.ByteArrayInputStream;
 import java.io.ObjectInput;
@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.om.infra.oauth.Const;
+import com.example.infra.oauth.Const;
 
 @RestController
 @RequestMapping(

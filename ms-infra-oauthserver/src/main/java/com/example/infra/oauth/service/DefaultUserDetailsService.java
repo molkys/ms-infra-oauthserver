@@ -1,4 +1,4 @@
-package com.om.infra.oauth.service;
+package com.example.infra.oauth.service;
 
 import java.util.Collections;
 import java.util.Optional;
@@ -10,8 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.om.infra.oauth.model.AppUser;
-import com.om.infra.oauth.repository.IAppUserRepository;
+import com.example.infra.oauth.model.AppUser;
+import com.example.infra.oauth.repository.IAppUserRepository;
 
 /**
  * In-Memory implementation for security passing only user name

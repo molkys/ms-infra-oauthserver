@@ -126,6 +126,28 @@
 		    <scope>compile</scope>
 		</dependency>
 		
+		<!--  [A-starts] Java 11.
+				Fixes error when running under Java 11:
+				ClassNotFoundException: com.sun.xml.internal.bind.v2.ContextFactory 
+				When runing under Java 8, following libraries can be commented out
+		-->
+		<dependency>
+		    <groupId>javax.xml.bind</groupId>
+		    <artifactId>jaxb-api</artifactId>
+		    <version>2.3.1</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.sun.xml.bind</groupId>
+		    <artifactId>jaxb-impl</artifactId>
+		    <version>2.3.1</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.sun.xml.bind</groupId>
+		    <artifactId>jaxb-core</artifactId>
+		    <version>2.3.0</version>
+		</dependency>
+		<!--  [A-ends] -->
+
 	</dependencies>
 
 	<dependencyManagement>

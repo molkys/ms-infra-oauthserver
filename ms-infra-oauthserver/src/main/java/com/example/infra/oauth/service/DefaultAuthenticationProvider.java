@@ -1,8 +1,7 @@
-package com.om.infra.oauth.service;
+package com.example.infra.oauth.service;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,11 +13,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.om.infra.oauth.model.AppUser;
-import com.om.infra.oauth.repository.IAppUserRepository;
-
 /**
- * Database implementation for security passing user name and password
+ * In-Memory implementation for security passing user name and password
  * 
  * TESTING on postman.
  * 
@@ -31,16 +27,13 @@ import com.om.infra.oauth.repository.IAppUserRepository;
  *
  */
 @Service
-public class DatabaseAuthenticationProvider implements AuthenticationProvider {
+public class DefaultAuthenticationProvider implements AuthenticationProvider {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(DatabaseAuthenticationProvider.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(DefaultAuthenticationProvider.class);
 	
-	private final IAppUserRepository appUserRepository;
-
-    public DatabaseAuthenticationProvider(IAppUserRepository appUserRepository) {
-        this.appUserRepository = appUserRepository;
-    }
-
+    private static final String VALID_USER_EMAIL = "test@test.com";
+    private static final String VALID_USER_PASSWORD = "tester";
+    
     @Override
     public Authentication authenticate(final Authentication authentication) throws AuthenticationException {
        
@@ -59,23 +52,13 @@ public class DatabaseAuthenticationProvider implements AuthenticationProvider {
             return null;
         }
 
-        final Optional<AppUser> appUser = this.appUserRepository.findById(authentication.getName());
-
-        if (appUser.isPresent()) {
-            final AppUser user = appUser.get();
-            final String providedUserEmail = authentication.getName();
-            final Object providedUserPassword = authentication.getCredentials();
-
-            if (providedUserEmail.equalsIgnoreCase(user.getUserEmail())
-                    && providedUserPassword.equals(user.getUserPass())) {
-            	
-            	LOGGER.info("Valid user name and password");
-            	
-                return new UsernamePasswordAuthenticationToken(
-                        user.getUserEmail(),
-                        user.getUserPass(),
-                        Collections.singleton(new SimpleGrantedAuthority(user.getUserRole())));
-            }
+        if (userEmail.equalsIgnoreCase(VALID_USER_EMAIL)
+                && userPassword.equals(VALID_USER_PASSWORD)) {
+        	
+        	LOGGER.error("Valid user name and password");
+        	
+            return new UsernamePasswordAuthenticationToken(
+                    userEmail, userPassword, getAuthority());
         }
 
         throw new UsernameNotFoundException("Invalid username or password.");
@@ -85,4 +68,9 @@ public class DatabaseAuthenticationProvider implements AuthenticationProvider {
     public boolean supports(final Class<?> authentication) {
         return authentication.equals(UsernamePasswordAuthenticationToken.class);
     }
+
+    private List<SimpleGrantedAuthority> getAuthority() {
+        return Collections.emptyList();
+    }
+
 }

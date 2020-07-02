@@ -1,4 +1,4 @@
-package com.om.infra.oauth.controller;
+package com.example.infra.oauth.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

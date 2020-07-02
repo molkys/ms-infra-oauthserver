@@ -1,4 +1,4 @@
-package com.om.infra.oauth;
+package com.example.infra.oauth;
 
 import javax.sql.DataSource;
 

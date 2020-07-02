@@ -1,0 +1,32 @@
+---
+spring:
+  application:
+    name: ms-infra-oauthserver
+  profiles: 
+    # Active profile that can be overwriten by -Dspring.profiles.active
+    active: ${spring.profiles.active}
+---
+spring:
+  profiles: production
+logging:
+  #Commenting out since this file is designed to have this profile
+  #deployed in claud, in which there is no file system (ephymeral)
+  #file: /ms/INFRA/logs/ms-infra-email.log
+  pattern:
+    console: "%d %-5level [%thread] %logger : %msg%n"
+  level: 
+    com.example.infra.oauth: DEBUG
+    org.springframework: ERROR
+    org.springframework.boot.env.PropertySourcesLoader: ERROR
+    org.springframework.boot.autoconfigure.security: TRACE
+    org.springframework.security: TRACE
+    org.springframework.boot.web: TRACE
+    org.springframework.boot.web.embedded: TRACE
+    org.springframework.cloud: ERROR
+    org.springframework.web: ERROR
+    org.springframework.beans: ERROR
+    org.springframework.test: DEBUG
+    org.springframework.restdocs: ERROR
+    org.eclipse.jetty: ERROR
+    org.liquibase: DEBUG
+    com.h2database: TRACE
